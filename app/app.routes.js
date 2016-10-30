@@ -44,6 +44,23 @@ function config($urlRouterProvider, $stateProvider, componentsUrl) {
                 }]
             }
         })
+        .state('profile', {
+            url: "/profile",
+            templateUrl: componentsUrl + "/profile/profile.html",
+            controller: "ProfileController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'eduKup',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            componentsUrl + "/profile/profile.service.js",
+                            componentsUrl + "/profile/profile.controller.js"
+                        ]
+                    });
+                }]
+            }
+        })
 
 
 }

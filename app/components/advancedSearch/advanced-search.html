@@ -27,52 +27,33 @@
                             <div class="search_jobs">
 
                                 <div class="search_keywords">
-                                    <label for="search_keywords">What are you looking for?</label>
+                                    <label for="search_keywords">Keywords</label>
                                     <input type="text" name="search_keywords" id="search_keywords"
-                                           placeholder="What are you looking for?" value=""/>
+                                           placeholder="Nom de l'école"/>
                                 </div>
-
                                 <div class="search_location">
                                     <label for="search_location">Location</label>
-                                    <input type="text" name="search_location" id="search_location"
-                                           placeholder="Location" value=""/>
+                                    <div ng-click="getCurrentLocalisation()">
+                                        <i ng-class="{'loading' : loading}" class="locate-me"></i>
+                                    </div>
+                                    <input ng-model="location" type="text" name="search_location" id="search_location"
+                                           placeholder="Location"/>
                                 </div>
 
-                                <div class="search_categories">
+
+                                <div class="search_categories ">
                                     <label for="search_categories">Category</label>
+                                    <i class="glyphicon glyphicon-menu-down"></i>
                                     <select name='search_categories[]' id='search_categories'
-                                            class='job-manager-category-dropdown '
+                                            class='job-manager-category-dropdown selectParent'
                                             data-placeholder='Choose a category&hellip;'
                                             data-no_results_text='No results match'
                                             data-multiple_text='Select Some Options'>
-                                        <option value="">All categories</option>
-                                        <option class="level-0" value="14">Arts &amp; Entertainment</option>
-                                        <option class="level-1" value="83">&nbsp;&nbsp;&nbsp;Comedy Club</option>
-                                        <option class="level-1" value="84">&nbsp;&nbsp;&nbsp;Landmarks</option>
-                                        <option class="level-0" value="16">Bars</option>
-                                        <option class="level-1" value="18">&nbsp;&nbsp;&nbsp;Breweries</option>
-                                        <option class="level-0" value="20">Food</option>
-                                        <option class="level-0" value="23">Lodging</option>
-                                        <option class="level-1" value="70">&nbsp;&nbsp;&nbsp;Hotels</option>
-                                        <option class="level-0" value="25">Nightlife</option>
-                                        <option class="level-1" value="88">&nbsp;&nbsp;&nbsp;Bars</option>
-                                        <option class="level-1" value="89">&nbsp;&nbsp;&nbsp;Nightclub</option>
-                                        <option class="level-0" value="78">Outdoors</option>
-                                        <option class="level-1" value="96">&nbsp;&nbsp;&nbsp;Beach</option>
-                                        <option class="level-1" value="79">&nbsp;&nbsp;&nbsp;Park</option>
-                                        <option class="level-0" value="29">Restaurants</option>
-                                        <option class="level-1" value="121">&nbsp;&nbsp;&nbsp;Asian Fusion</option>
-                                        <option class="level-1" value="118">&nbsp;&nbsp;&nbsp;Brunch</option>
-                                        <option class="level-1" value="51">&nbsp;&nbsp;&nbsp;Canadian</option>
-                                        <option class="level-1" value="40">&nbsp;&nbsp;&nbsp;Coffee &amp; Tea</option>
-                                        <option class="level-1" value="41">&nbsp;&nbsp;&nbsp;Doughnuts</option>
-                                        <option class="level-1" value="53">&nbsp;&nbsp;&nbsp;French</option>
-                                        <option class="level-1" value="55">&nbsp;&nbsp;&nbsp;Japanese</option>
-                                        <option class="level-1" value="123">&nbsp;&nbsp;&nbsp;Sandwiches</option>
-                                        <option class="level-1" value="31">&nbsp;&nbsp;&nbsp;Steakhouse</option>
-                                        <option class="level-1" value="56">&nbsp;&nbsp;&nbsp;Sushi Bars</option>
-                                        <option class="level-1" value="32">&nbsp;&nbsp;&nbsp;Thai</option>
-                                        <option class="level-1" value="33">&nbsp;&nbsp;&nbsp;Vegan</option>
+
+                                        <option class="level-0" value="14">Ecole primaire</option>
+                                        <option class="level-0" value="14">Collége</option>
+                                        <option class="level-0" value="14">Lycée</option>
+
                                     </select>
                                 </div>
 
@@ -98,7 +79,7 @@
 
                                 <input type="hidden" id="search_lat" name="search_lat" value="0"/>
                                 <input type="hidden" id="search_lng" name="search_lng" value="0"/>
-                                <div class="filter_wide filter_by_tag">Filter by tag: <span
+                                <div class="filter_wide filter_by_tag">Filtrage : <span
                                         class="filter_by_tag_cloud"></span></div>
 
                                 <div class="search-radius-label">
@@ -127,7 +108,7 @@
                                 </div>
 
 
-                                <div class="filter_wide filter_by_tag">Filter by tag: <span
+                                <div class="filter_wide filter_by_tag">Filtrage : <span
                                         class="filter_by_tag_cloud"></span></div>
                                 <div class="search-radius-label">
                                     <label for="etatique">
@@ -144,11 +125,11 @@
                                     </label>
                                 </div>
                                 <div style="display: flex" ng-if="sys.prive==1">
-                                    <div style="width: 100%"  class="filter_wide filter_by_tag">Tarif: {{tarif}} DT<span
+                                    <div style="width: 100%" class="filter_wide filter_by_tag">Tarif: {{tarif}} DT<span
                                             class="filter_by_tag_cloud"></span>
 
                                     </div>
-                                    <div  class="search-radius-slider">
+                                    <div class="search-radius-slider">
                                         <div ui-slider="slider.options"
                                              min="0"
                                              max="3000"
@@ -257,7 +238,408 @@
                             <button type="submit" data-refresh="Loading..." data-label="Update" name="update_results"
                                     class="update_results">Update
                             </button>
-                            <div class="showing_jobs"></div>
+                            <br><br>
+                            <ul class="job_listings">
+
+
+                                <li itemscope="" itemtype="http://schema.org/LocalBusiness" id="job_listing-1299"
+                                    data-grid-columns="col-xs-12 col-sm-6" data-rating="0 Stars" data-id="1299"
+                                    data-link="https://listify-demos.astoundify.com/classic/listing/the-hoxton/"
+                                    data-thumb="https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2016/05/IMG_0190-45-1200x800-150x150.jpg"
+                                    data-title="The Hoxton" data-address="69 Bathurst Street Toronto, ON M5V 1M5 Canada"
+                                    data-longitude="-79.4022922" data-latitude="43.6435899"
+                                    data-icon="ion-information-circled" data-term="88" data-featured="featured"
+                                    class="post-1299 job_listing type-job_listing status-publish hentry job_position_featured listing-featured--badge style-grid col-xs-12 col-sm-6">
+
+                                    <div class="content-box">
+
+                                        <div class="job-manager-form wp-job-manager-bookmarks-form">
+                                            <div class="bookmark-action">
+                                                <a class="bookmark-notice"
+                                                   href="https://listify-demos.astoundify.com/classic/my-account/">
+                                                    <span class="screen-reader-text">Login to bookmark this Listing</span>
+                                                </a>
+
+
+		<span class="wp-job-manager-bookmarks-count wp-job-manager-bookmarks-count--archive">
+							4					</span>
+                                            </div>
+                                        </div>
+
+                                        <a href="#/profile"
+                                           class="job_listing-clickbox"></a>
+
+                                        <header style="background-image: url(assets/o-COLE-TUNISIE-facebook.jpg);"
+                                                class="job_listing-entry-header listing-cover has-image">
+
+                                            <div class="job_listing-entry-header-wrapper cover-wrapper">
+
+                                                <div class="job_listing-entry-thumbnail">
+                                                    <div style="background-image: url(assets/16694179.jpg);"
+                                                         class="list-cover has-image"></div>
+                                                </div>
+                                                <div class="job_listing-entry-meta">
+                                                    <a href="#what-is-claimed" class="claimed-ribbon popup-trigger">
+                                                        <span class="ion-checkmark-circled"></span>
+                                                        <span class="tooltip">Verified Listing</span>
+                                                    </a>
+
+                                                    <div id="what-is-claimed" class="popup">
+                                                        <h2 class="popup-title">Verified Listing</h2>
+
+                                                        This listing is being maintained by its rightful owner.
+                                                    </div>
+                                                    <h2 itemprop="name" class="job_listing-title">
+                                                        Ecole primaire al riath Jerba </h2>
+                                                    <div class="job_listing-location job_listing-location-formatted"><a
+                                                            class="google_map_link"
+                                                            href="http://maps.google.com/maps?daddr=43.6412346%2C-79.3773697"
+                                                            target="_blank"><span itemprop="address" itemscope
+                                                                                  itemtype="http://schema.org/PostalAddress">10 <span
+                                                            itemprop="streetAddress">Bay Street</span><br/><span
+                                                            itemprop="addressLocality">Toronto</span> <span
+                                                            itemprop="addressRegion">Ontario</span><br/><span
+                                                            itemprop="addressCountry">Canada</span></span></a></div>
+                                                    <div class="job_listing-phone">
+                                            <span itemprop="telephone"><a
+                                                    href="tel:16473477347">+1 (647) 347-7347</a></span>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </header><!-- .entry-header -->
+
+                                        <footer class="job_listing-entry-footer">
+
+                                            <div itemprop="aggregateRating" itemscope
+                                                 itemtype="http://schema.org/AggregateRating"
+                                                 class="rating-0 job_listing-rating-wrapper" title="3 Reviews">
+			<span class="job_listing-rating-stars">
+				<span class="star-icon"><span class="ion-ios-star"></span></span><span class="star-icon"><span
+                    class="ion-ios-star"></span></span><span class="star-icon"><span class="ion-ios-star"></span></span><span
+                    class="star-icon"><span class="ion-ios-star"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-outline"></span></span>			</span>
+
+			<span class="job_listing-rating-average">
+				<span itemprop="ratingValue">4.0</span>
+				<meta itemprop="bestRating" content="5"/>
+				<meta itemprop="worstRating" content="1"/>
+			</span>
+			<span class="job_listing-rating-count">
+				<span itemprop="ratingCount">3</span> Reviews			</span>
+                                            </div>
+
+                                            <div class="listing-entry-company-image listing-entry-company-image--card listing-entry-company-image--type-logo listing-entry-company-image--style-circle">
+
+
+                                            </div>
+
+
+                                            <div id="what-is-claimed" class="popup">
+                                                <h2 class="popup-title">Verified Listing</h2>
+
+                                                This listing is being maintained by its rightful owner.
+                                            </div>
+
+                                        </footer><!-- .entry-footer -->
+
+
+                                    </div>
+                                </li><!-- #post-## -->
+
+
+                                <li itemscope="" itemtype="http://schema.org/LocalBusiness" id="job_listing-1210"
+                                    data-grid-columns="col-xs-12 col-sm-6" data-rating="0 Stars" data-id="1210"
+                                    data-link="https://listify-demos.astoundify.com/classic/listing/hotel-ocho/"
+                                    data-thumb="https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2016/05/20110503-hotel_ocho06-150x150.jpg"
+                                    data-title="Hotel Ocho" data-address="195 Spadina Avenue Toronto, ON M5T 2C5 Canada"
+                                    data-longitude="-79.3965444" data-latitude="43.6499842" data-icon="ion-home"
+                                    data-term="70" data-featured="featured"
+                                    class="post-1210 job_listing type-job_listing status-publish hentry job_position_featured listing-featured--badge style-grid col-xs-12 col-sm-6">
+
+                                    <div class="content-box">
+
+                                        <div class="job-manager-form wp-job-manager-bookmarks-form">
+                                            <div class="bookmark-action">
+                                                <a class="bookmark-notice"
+                                                   href="https://listify-demos.astoundify.com/classic/my-account/">
+                                                    <span class="screen-reader-text">Login to bookmark this Listing</span>
+                                                </a>
+
+
+		<span class="wp-job-manager-bookmarks-count wp-job-manager-bookmarks-count--archive">
+							11					</span>
+                                            </div>
+                                        </div>
+
+                                        <a href="#/profile"
+                                           class="job_listing-clickbox"></a>
+
+                                        <header style="background-image: url(assets/maxresdefault.jpg);"
+                                                class="job_listing-entry-header listing-cover has-image">
+
+                                            <div class="job_listing-entry-header-wrapper cover-wrapper">
+
+                                                <div class="job_listing-entry-thumbnail">
+                                                    <div style="background-image: url(assets/ecole-primaire-insolite-pajol-paris.jpg);"
+                                                         class="list-cover has-image"></div>
+                                                </div>
+                                                <div class="job_listing-entry-meta">
+
+                                                    <div class="listing-featured-badge">
+                                                        Featured
+                                                    </div>
+
+                                                    <h2 itemprop="name" class="job_listing-title">
+                                                        Lycée pilote sfax </h2>
+                                                    <div class="job_listing-location job_listing-location-formatted"><a
+                                                            class="google_map_link"
+                                                            href="http://maps.google.com/maps?daddr=43.6435899%2C-79.4022922"
+                                                            target="_blank"><span itemprop="address" itemscope
+                                                                                  itemtype="http://schema.org/PostalAddress"></a>
+                                                    </div>
+                                                    <div class="job_listing-phone">
+                                            <span itemprop="telephone"><a
+                                                    href="tel:4164567321">(416) 456-7321</a></span>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </header><!-- .entry-header -->
+
+                                        <footer class="job_listing-entry-footer">
+
+                                            <div itemprop="aggregateRating" itemscope
+                                                 itemtype="http://schema.org/AggregateRating"
+                                                 class="rating-0 job_listing-rating-wrapper" title="2 Reviews">
+			<span class="job_listing-rating-stars">
+				<span class="star-icon"><span class="ion-ios-star"></span></span><span class="star-icon"><span
+                    class="ion-ios-star"></span></span><span class="star-icon"><span class="ion-ios-star"></span></span><span
+                    class="star-icon"><span class="ion-ios-star"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-half"></span></span>			</span>
+
+			<span class="job_listing-rating-average">
+				<span itemprop="ratingValue">4.5</span>
+				<meta itemprop="bestRating" content="5"/>
+				<meta itemprop="worstRating" content="1"/>
+			</span>
+			<span class="job_listing-rating-count">
+				<span itemprop="ratingCount">2</span> Reviews			</span>
+                                            </div>
+
+                                            <div class="listing-entry-company-image listing-entry-company-image--card listing-entry-company-image--type-logo listing-entry-company-image--style-circle">
+
+
+                                            </div>
+
+
+                                        </footer><!-- .entry-footer -->
+
+
+                                    </div>
+                                </li><!-- #post-## -->
+
+
+                                <li itemscope="" itemtype="http://schema.org/LocalBusiness" id="job_listing-1292"
+                                    data-grid-columns="col-xs-12 col-sm-6" data-rating="0 Stars" data-id="1292"
+                                    data-link="https://listify-demos.astoundify.com/classic/listing/same-nightclub/"
+                                    data-thumb="https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2016/05/69-650x430-150x150.jpg"
+                                    data-title="Same Nightclub"
+                                    data-address="510 King Street W Toronto, ON M5V 1K4 Canada"
+                                    data-longitude="-79.3970691" data-latitude="43.6452276"
+                                    data-icon="ion-information-circled" data-term="88" data-featured="featured"
+                                    class="post-1292 job_listing type-job_listing status-publish hentry job_position_featured listing-featured--badge style-grid col-xs-12 col-sm-6">
+
+                                    <div class="content-box">
+
+                                        <div class="job-manager-form wp-job-manager-bookmarks-form">
+                                            <div class="bookmark-action">
+                                                <a class="bookmark-notice"
+                                                   href="https://listify-demos.astoundify.com/classic/my-account/">
+                                                    <span class="screen-reader-text">Login to bookmark this Listing</span>
+                                                </a>
+
+
+		<span class="wp-job-manager-bookmarks-count wp-job-manager-bookmarks-count--archive">
+							3					</span>
+                                            </div>
+                                        </div>
+
+                                        <a href="#/profile"
+                                           class="job_listing-clickbox"></a>
+
+                                        <header style="background-image: url(assets/prim2.png);"
+                                                class="job_listing-entry-header listing-cover has-image">
+
+                                            <div class="job_listing-entry-header-wrapper cover-wrapper">
+
+                                                <div class="job_listing-entry-thumbnail">
+                                                    <div style="background-image: url(https://17315-presscdn-0-68-pagely.netdna-ssl.com/classic/wp-content/uploads/sites/2/2016/05/Drake-Hotel-Facade-compressor.jpg);"
+                                                         class="list-cover has-image"></div>
+                                                </div>
+                                                <div class="job_listing-entry-meta">
+                                                    <h2 itemprop="name" class="job_listing-title">
+                                                        La Récré </h2>
+                                                    <div class="job_listing-location job_listing-location-formatted"><a
+                                                            class="google_map_link"
+                                                            href="http://maps.google.com/maps?daddr=43.6432048%2C-79.4246377"
+                                                            target="_blank"><span itemprop="address" itemscope
+                                                                                  itemtype="http://schema.org/PostalAddress">1150 <span
+                                                            itemprop="streetAddress">Queen Street West</span><br/><span
+                                                            itemprop="addressLocality">Toronto</span> <span
+                                                            itemprop="addressRegion">Ontario</span> <span
+                                                            itemprop="postalCode">M6J 1J3</span><br/><span
+                                                            itemprop="addressCountry">Canada</span></span></a></div>
+                                                    <div class="job_listing-phone">
+                                                        <span itemprop="telephone"><a
+                                                                href="tel:4165315042">416-531-5042</a></span>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </header><!-- .entry-header -->
+
+                                        <footer class="job_listing-entry-footer">
+
+                                            <div itemprop="aggregateRating" itemscope
+                                                 itemtype="http://schema.org/AggregateRating"
+                                                 class="rating-0 job_listing-rating-wrapper" title="2 Reviews">
+			<span class="job_listing-rating-stars">
+				<span class="star-icon"><span class="ion-ios-star"></span></span><span class="star-icon"><span
+                    class="ion-ios-star"></span></span><span class="star-icon"><span class="ion-ios-star"></span></span><span
+                    class="star-icon"><span class="ion-ios-star"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-half"></span></span>			</span>
+
+			<span class="job_listing-rating-average">
+				<span itemprop="ratingValue">4.5</span>
+				<meta itemprop="bestRating" content="5"/>
+				<meta itemprop="worstRating" content="1"/>
+			</span>
+			<span class="job_listing-rating-count">
+				<span itemprop="ratingCount">2</span> Reviews			</span>
+                                            </div>
+
+                                            <div class="listing-entry-company-image listing-entry-company-image--card listing-entry-company-image--type-logo listing-entry-company-image--style-circle">
+
+
+                                            </div>
+
+
+                                        </footer><!-- .entry-footer -->
+
+
+                                    </div>
+                                </li><!-- #post-## -->
+
+
+                                <li itemscope="" itemtype="http://schema.org/LocalBusiness" id="job_listing-233"
+                                    data-grid-columns="col-xs-12 col-sm-6" data-rating="0 Stars" data-id="233"
+                                    data-link="https://listify-demos.astoundify.com/classic/listing/1596-queen-street-w-toronto-on-m6r-glory-hole-doughnuts/"
+                                    data-thumb="https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2014/11/glory-hole-to-150x150.jpg"
+                                    data-title="Glory Hole Doughnuts" data-address="1596 Queen Street W Toronto, ON M6R"
+                                    data-longitude="-79.4415219" data-latitude="43.6397507" data-icon="ion-coffee"
+                                    data-term="41" data-featured="featured"
+                                    class="post-233 job_listing type-job_listing status-publish hentry job_position_featured listing-featured--badge style-grid col-xs-12 col-sm-6">
+
+                                    <div class="content-box">
+
+                                        <div class="job-manager-form wp-job-manager-bookmarks-form">
+                                            <div class="bookmark-action">
+                                                <a class="bookmark-notice"
+                                                   href="https://listify-demos.astoundify.com/classic/my-account/">
+                                                    <span class="screen-reader-text">Login to bookmark this Listing</span>
+                                                </a>
+
+
+		<span class="wp-job-manager-bookmarks-count wp-job-manager-bookmarks-count--archive">
+							2					</span>
+                                            </div>
+                                        </div>
+
+                                        <a href="https://listify-demos.astoundify.com/classic/listing/1596-queen-street-w-toronto-on-m6r-glory-hole-doughnuts/"
+                                           class="job_listing-clickbox"></a>
+
+                                        <header style="background-image: url(https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2014/11/glory-hole-to.jpg);"
+                                                class="job_listing-entry-header listing-cover has-image">
+
+                                            <div class="job_listing-entry-header-wrapper cover-wrapper">
+
+                                                <div class="job_listing-entry-thumbnail">
+                                                    <div style="background-image: url(https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2014/11/glory-hole-to.jpg);"
+                                                         class="list-cover has-image"></div>
+                                                </div>
+                                                <div class="job_listing-entry-meta">
+
+                                                    <div class="listing-featured-badge">
+                                                        Featured
+                                                    </div>
+
+                                                    <h2 itemprop="name" class="job_listing-title">
+                                                        Glory Hole Doughnuts </h2>
+                                                    <div class="job_listing-location job_listing-location-formatted"><a
+                                                            class="google_map_link"
+                                                            href="http://maps.google.com/maps?daddr=43.6397507%2C-79.4415219"
+                                                            target="_blank"><span itemprop="address" itemscope=""
+                                                                                  itemtype="http://schema.org/PostalAddress">1596 <span
+                                                            itemprop="streetAddress">Queen Street West</span><br><span
+                                                            itemprop="addressLocality">Toronto</span> <span
+                                                            itemprop="addressRegion">Ontario</span> <span
+                                                            itemprop="postalCode">M6R 1A8</span><br><span
+                                                            itemprop="addressCountry">Canada</span></span></a></div>
+                                                    <div class="job_listing-phone">
+                                                        <span itemprop="telephone"><a href="tel:6473524848">(647) 352-4848</a></span>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </header><!-- .entry-header -->
+
+                                        <footer class="job_listing-entry-footer">
+
+                                            <div itemprop="aggregateRating" itemscope=""
+                                                 itemtype="http://schema.org/AggregateRating"
+                                                 class="rating-0 job_listing-rating-wrapper" title="0 Reviews">
+			<span class="job_listing-rating-stars">
+				<span class="star-icon"><span class="ion-ios-star-outline"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-outline"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-outline"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-outline"></span></span><span class="star-icon"><span
+                    class="ion-ios-star-outline"></span></span>			</span>
+
+			<span class="job_listing-rating-average">
+				<span itemprop="ratingValue">0.0</span>
+				<meta itemprop="bestRating" content="5">
+				<meta itemprop="worstRating" content="1">
+			</span>
+			<span class="job_listing-rating-count">
+				<span itemprop="ratingCount">0</span> Reviews			</span>
+                                            </div>
+
+                                            <div class="listing-entry-company-image listing-entry-company-image--card listing-entry-company-image--type-logo listing-entry-company-image--style-circle">
+
+                                                <img class="listing-entry-company-image__img listing-entry-company-image__img--type-logo listing-entry-company-image__img--style-circle"
+                                                     src="https://listify-demos.astoundify.com/classic/wp-content/uploads/sites/2/2014/11/glory-hole-doughnuts-thumbnail.jpg"
+                                                     alt="Glory Hole Doughnuts">
+
+                                            </div>
+
+
+                                        </footer><!-- .entry-footer -->
+
+
+                                    </div>
+                                </li><!-- #post-## -->
+
+
+                            </ul>
                         </form>
 
                         <div class="archive-job_listing-filter-title">
@@ -285,13 +667,9 @@
         </div>
         <div class="col-md-6 job_listings-map-wrapper listings-map-wrapper--right">
 
-            <div class="job_listings-map">
-                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true"
-                                    options="map.options">
 
+            <img style="width: 680px;" src="assets/maps-ad.png">
 
-                </ui-gmap-google-map>
-            </div>
 
         </div>
     </div>
