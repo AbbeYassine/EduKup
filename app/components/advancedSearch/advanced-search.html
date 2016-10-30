@@ -1,0 +1,300 @@
+<div id="content" class="site-content">
+
+
+    <div class="archive-job_listing-toggle-wrapper container">
+        <div class="archive-job_listing-toggle-inner views">
+            <a href="#" class="archive-job_listing-toggle active" data-toggle=".content-area">Results</a><a href="#"
+                                                                                                            class="archive-job_listing-toggle"
+                                                                                                            data-toggle=".job_listings-map-wrapper">Map</a>
+        </div>
+    </div>
+
+    <div>
+
+
+        <div id="primary" class="col-md-6 container">
+            <div class="row content-area">
+
+
+                <main id="main" class="site-main col-xs-12 job_filters--boxless" role="main">
+                    <div class="job_listings" data-location="" data-keywords="" data-show_filters="true"
+                         data-show_pagination="true" data-per_page="25" data-orderby="featured" data-order="DESC"
+                         data-categories="">
+                        <a href="#" data-toggle=".job_filters" class="js-toggle-area-trigger">Toggle Filters</a>
+
+                        <form class="job_filters">
+
+                            <div class="search_jobs">
+
+                                <div class="search_keywords">
+                                    <label for="search_keywords">What are you looking for?</label>
+                                    <input type="text" name="search_keywords" id="search_keywords"
+                                           placeholder="What are you looking for?" value=""/>
+                                </div>
+
+                                <div class="search_location">
+                                    <label for="search_location">Location</label>
+                                    <input type="text" name="search_location" id="search_location"
+                                           placeholder="Location" value=""/>
+                                </div>
+
+                                <div class="search_categories">
+                                    <label for="search_categories">Category</label>
+                                    <select name='search_categories[]' id='search_categories'
+                                            class='job-manager-category-dropdown '
+                                            data-placeholder='Choose a category&hellip;'
+                                            data-no_results_text='No results match'
+                                            data-multiple_text='Select Some Options'>
+                                        <option value="">All categories</option>
+                                        <option class="level-0" value="14">Arts &amp; Entertainment</option>
+                                        <option class="level-1" value="83">&nbsp;&nbsp;&nbsp;Comedy Club</option>
+                                        <option class="level-1" value="84">&nbsp;&nbsp;&nbsp;Landmarks</option>
+                                        <option class="level-0" value="16">Bars</option>
+                                        <option class="level-1" value="18">&nbsp;&nbsp;&nbsp;Breweries</option>
+                                        <option class="level-0" value="20">Food</option>
+                                        <option class="level-0" value="23">Lodging</option>
+                                        <option class="level-1" value="70">&nbsp;&nbsp;&nbsp;Hotels</option>
+                                        <option class="level-0" value="25">Nightlife</option>
+                                        <option class="level-1" value="88">&nbsp;&nbsp;&nbsp;Bars</option>
+                                        <option class="level-1" value="89">&nbsp;&nbsp;&nbsp;Nightclub</option>
+                                        <option class="level-0" value="78">Outdoors</option>
+                                        <option class="level-1" value="96">&nbsp;&nbsp;&nbsp;Beach</option>
+                                        <option class="level-1" value="79">&nbsp;&nbsp;&nbsp;Park</option>
+                                        <option class="level-0" value="29">Restaurants</option>
+                                        <option class="level-1" value="121">&nbsp;&nbsp;&nbsp;Asian Fusion</option>
+                                        <option class="level-1" value="118">&nbsp;&nbsp;&nbsp;Brunch</option>
+                                        <option class="level-1" value="51">&nbsp;&nbsp;&nbsp;Canadian</option>
+                                        <option class="level-1" value="40">&nbsp;&nbsp;&nbsp;Coffee &amp; Tea</option>
+                                        <option class="level-1" value="41">&nbsp;&nbsp;&nbsp;Doughnuts</option>
+                                        <option class="level-1" value="53">&nbsp;&nbsp;&nbsp;French</option>
+                                        <option class="level-1" value="55">&nbsp;&nbsp;&nbsp;Japanese</option>
+                                        <option class="level-1" value="123">&nbsp;&nbsp;&nbsp;Sandwiches</option>
+                                        <option class="level-1" value="31">&nbsp;&nbsp;&nbsp;Steakhouse</option>
+                                        <option class="level-1" value="56">&nbsp;&nbsp;&nbsp;Sushi Bars</option>
+                                        <option class="level-1" value="32">&nbsp;&nbsp;&nbsp;Thai</option>
+                                        <option class="level-1" value="33">&nbsp;&nbsp;&nbsp;Vegan</option>
+                                    </select>
+                                </div>
+
+                                <div class="search-radius-wrapper in-use">
+                                    <div class="search-radius-label">
+                                        <label for="use_search_radius">
+                                            <input type="checkbox" name="use_search_radius" id="use_search_radius"
+                                                   checked='checked'/>
+                                            Radius: <span class="radi">{{radius}}</span> km </label>
+
+                                    </div>
+                                    <div class="search-radius-slider">
+                                        <div ui-slider="slider.options"
+                                             min="0"
+                                             max="50"
+                                             ng-model="radius"></div>
+                                    </div>
+
+
+                                    <input type="hidden" id="search_radius" name="search_radius" value="50"/>
+                                </div>
+
+
+                                <input type="hidden" id="search_lat" name="search_lat" value="0"/>
+                                <input type="hidden" id="search_lng" name="search_lng" value="0"/>
+                                <div class="filter_wide filter_by_tag">Filter by tag: <span
+                                        class="filter_by_tag_cloud"></span></div>
+
+                                <div class="search-radius-label">
+                                    <label for="cantine">
+                                        <input type="checkbox" name="use_search_radius" id="cantine"/>
+                                        Cantine
+                                    </label>
+                                </div>
+                                <div class="search-radius-label">
+                                    <label for="accesInternet">
+                                        <input type="checkbox" name="use_search_radius" id="accesInternet"/>
+                                        Acces à Internet
+                                    </label>
+                                </div>
+                                <div class="search-radius-label">
+                                    <label for="sallePerm">
+                                        <input type="checkbox" name="use_search_radius" id="sallePerm"/>
+                                        Salle de permanence
+                                    </label>
+                                </div>
+                                <div class="search-radius-label">
+                                    <label for="salleSport">
+                                        <input type="checkbox" name="use_search_radius" id="salleSport"/>
+                                        Salle de sport
+                                    </label>
+                                </div>
+
+
+                                <div class="filter_wide filter_by_tag">Filter by tag: <span
+                                        class="filter_by_tag_cloud"></span></div>
+                                <div class="search-radius-label">
+                                    <label for="etatique">
+                                        <input type="checkbox" name="use_search_radius" id="etatique"/>
+                                        Etatique
+                                    </label>
+                                </div>
+
+                                <div class="search-radius-label">
+                                    <label for="prive">
+                                        <input ng-model="sys.prive" type="checkbox" name="use_search_radius"
+                                               id="prive"/>
+                                        Privée
+                                    </label>
+                                </div>
+                                <div style="display: flex" ng-if="sys.prive==1">
+                                    <div style="width: 100%"  class="filter_wide filter_by_tag">Tarif: {{tarif}} DT<span
+                                            class="filter_by_tag_cloud"></span>
+
+                                    </div>
+                                    <div  class="search-radius-slider">
+                                        <div ui-slider="slider.options"
+                                             min="0"
+                                             max="3000"
+                                             ng-model="tarif"></div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="filter_wide filter_by_tag">Systeme: <span
+                                        class="filter_by_tag_cloud"></span></div>
+                                <div class="search-radius-label">
+                                    <label for="SystemeTun">
+                                        <input type="checkbox" name="use_search_radius" id="SystemeTun"/>
+                                        Système tunisien
+                                    </label>
+                                </div>
+                                <div class="search-radius-label">
+                                    <label for="systemeFr">
+                                        <input type="checkbox" name="use_search_radius" id="systemeFr"/>
+                                        Système français
+                                    </label>
+                                </div>
+                                <div class="search-radius-label">
+                                    <label for="systemeEng">
+                                        <input type="checkbox" name="use_search_radius" id="systemeEng"/>
+                                        Système anglais
+                                    </label>
+                                </div>
+
+                                <input type="hidden" name="search_region" class="search_region" value="0"/></div>
+
+
+                            <p class="filter-by-type-label">Filter by type:</p><input type="hidden" id="search_context"
+                                                                                      name="search_context" value="0"/>
+                            <ul class="job_types">
+                                <span class="filter_by_tag_cloud"><a href="#" class="tag-link-57 tag-link-position-1"
+                                                                     title="47 listings" style="font-size: 2em;">Accepts Credit Cards</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/street-parking/"
+                                        class="tag-link-60 tag-link-position-2" title="33 listings"
+                                        style="font-size: 1.8913043478261em;">Street Parking</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/alcohol/"
+                                        class="tag-link-67 tag-link-position-3" title="31 listings"
+                                        style="font-size: 1.8768115942029em;">Alcohol</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/reservations/"
+                                        class="tag-link-73 tag-link-position-4" title="23 listings"
+                                        style="font-size: 1.7826086956522em;">Reservations</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/good-for-kids/"
+                                        class="tag-link-66 tag-link-position-5 active" title="21 listings"
+                                        style="font-size: 1.7536231884058em;">Good for Kids</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/bike-parking/"
+                                        class="tag-link-58 tag-link-position-6 active" title="21 listings"
+                                        style="font-size: 1.7536231884058em;">Bike Parking</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/coupons/"
+                                        class="tag-link-59 tag-link-position-7" title="15 listings"
+                                        style="font-size: 1.6521739130435em;">Coupons</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/pets-friendly/"
+                                        class="tag-link-61 tag-link-position-8" title="14 listings"
+                                        style="font-size: 1.6376811594203em;">Pets Friendly</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/wireless-internet/"
+                                        class="tag-link-64 tag-link-position-9" title="14 listings"
+                                        style="font-size: 1.6376811594203em;">Wireless Internet</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/wheelchair-accessible/"
+                                        class="tag-link-63 tag-link-position-10" title="9 listings"
+                                        style="font-size: 1.5072463768116em;">Wheelchair Accessible</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/accepts-apple-pay/"
+                                        class="tag-link-65 tag-link-position-11" title="5 listings"
+                                        style="font-size: 1.3478260869565em;">Accepts Apple Pay</a><a
+                                        href="https://listify-demos.astoundify.com/classic/listing-tag/live-music/"
+                                        class="tag-link-85 tag-link-position-12" title="4 listings"
+                                        style="font-size: 1.2898550724638em;">Live Music</a><a
+                                        class="tag-link-116 tag-link-position-13" title="1 listing"
+                                        style="font-size: 1em;">Delivery</a></span>
+                                <li><label for="job_type_freelance" class="freelance"><input type="checkbox"
+                                                                                             name="filter_job_type[]"
+                                                                                             value="freelance"
+                                                                                             checked='checked'
+                                                                                             id="job_type_freelance"/>
+                                    Freelance</label></li>
+                                <li><label for="job_type_full-time" class="full-time"><input type="checkbox"
+                                                                                             name="filter_job_type[]"
+                                                                                             value="full-time"
+                                                                                             checked='checked'
+                                                                                             id="job_type_full-time"/>
+                                    Full Time</label></li>
+                                <li><label for="job_type_internship" class="internship"><input type="checkbox"
+                                                                                               name="filter_job_type[]"
+                                                                                               value="internship"
+                                                                                               checked='checked'
+                                                                                               id="job_type_internship"/>
+                                    Internship</label></li>
+                                <li><label for="job_type_part-time" class="part-time"><input type="checkbox"
+                                                                                             name="filter_job_type[]"
+                                                                                             value="part-time"
+                                                                                             checked='checked'
+                                                                                             id="job_type_part-time"/>
+                                    Part Time</label></li>
+                                <li><label for="job_type_temporary" class="temporary"><input type="checkbox"
+                                                                                             name="filter_job_type[]"
+                                                                                             value="temporary"
+                                                                                             checked='checked'
+                                                                                             id="job_type_temporary"/>
+                                    Temporary</label></li>
+                            </ul>
+                            <input type="hidden" name="filter_job_type[]" value=""/>
+                            <button type="submit" data-refresh="Loading..." data-label="Update" name="update_results"
+                                    class="update_results">Update
+                            </button>
+                            <div class="showing_jobs"></div>
+                        </form>
+
+                        <div class="archive-job_listing-filter-title">
+                            <div class="archive-job_listing-layout-wrapper">
+
+                                <a href="#" data-style="grid" class="archive-job_listing-layout  active"><span
+                                        class="ion-grid"></span></a>
+                                <a href="#" data-style="list" class="archive-job_listing-layout "><span
+                                        class="ion-navicon-round"></span></a>
+
+                            </div>
+
+                            <h3 class="archive-job_listing-found">
+                                <span class="results-found">0</span> Results Found </h3>
+                        </div>
+
+                        <noscript>Your browser does not support JavaScript, or it is disabled. JavaScript must be
+                            enabled in order to view listings.
+                        </noscript>
+                        <ul class="job_listings"></ul>
+                    </div>
+                </main>
+
+            </div>
+        </div>
+        <div class="col-md-6 job_listings-map-wrapper listings-map-wrapper--right">
+
+            <div class="job_listings-map">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true"
+                                    options="map.options">
+
+
+                </ui-gmap-google-map>
+            </div>
+
+        </div>
+    </div>
+
+
+</div><!-- #content -->
